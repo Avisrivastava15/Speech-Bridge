@@ -31,13 +31,18 @@ SpeechRecognition / webkitSpeechRecognition for speech-to-text.
 SpeechSynthesis for text-to-speech.
 
 **Project Structure**
+
 speechbridge/
 │
 ├── index.html          # Loader page
+
 ├── speech-to-text.html # Speech-to-Text page
+
 ├── text-to-speech.html # Text-to-Speech page
+
 ├── css/
 │   └── styles.css      # Styling for pages, loader, and alerts
+
 └── js/
     └── script.js       # All JS logic for speech functionality and custom alerts
 
