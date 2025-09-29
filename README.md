@@ -41,7 +41,8 @@ speechbridge/
 ├── text-to-speech.html # Text-to-Speech page
 
 ├── css/
-│   └── styles.css      # Styling for pages, loader, and alerts
+│   
+    └── styles.css      # Styling for pages, loader, and alerts
 
 └── js/
     └── script.js       # All JS logic for speech functionality and custom alerts
