@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>🎤 Speech to Text</h1>
+        <button id="startBtn" class="btn">Start Speaking</button>
+        <div id="speechResult" class="output">Your text will appear here...</div>
+        <button class="btn secondary" onclick="copyText('speechResult')">Copy Text</button>
+        <a href="index.html" class="btn secondary">Back</a>
+    </div>
+
+    <!-- Notification container -->
+    <div id="notification-container"></div>
+
+    
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const speechResult = document.getElementById("speechResult");
+
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        recognition.onstart = () => { startBtn.innerText = "Listening... 🎧"; };
+        recognition.onend = () => { startBtn.innerText = "Start Speaking"; };
+        recognition.onresult = (event) => {
+            const text = event.results[0][0].transcript;
+            speechResult.innerText = text;
+        };
+
+        startBtn.addEventListener("click", () => recognition.start());
+
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => showNotification("Text copied!"));
+        }
+
+        function showNotification(message) {
+            const container = document.getElementById("notification-container");
+
+            // Create notification div
+            const notif = document.createElement("div");
+            notif.className = "notification";
+            notif.innerText = message;
+
+            // Add to container
+            container.appendChild(notif);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notif.classList.add("hide");
+                setTimeout(() => container.removeChild(notif), 500);
+            }, 3000);
+        }
+
+
+    </script>
+</body>
+</html>

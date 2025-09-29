@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Bridge</title>
+    <link rel="icon" href="speehBridge.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <h1 class="loader-text">Speech Bridge</h1>
+        <div class="loader-dots">
+            <div class="dot dot1"></div>
+            <div class="dot dot2"></div>
+            <div class="dot dot3"></div>
+        </div>
+    </div>
+
+    <!-- Main Landing Content -->
+    <div id="mainContent" style="display:none;">
+        <div class="app-container">
+            <h1>Welcome to Speech Bridge 🌐</h1>
+            <p>Select a mode:</p>
+            <div class="buttons">
+                <a href="speech-to-text.html" class="btn">🎤 Speech to Text</a>
+                <a href="text-to-speech.html" class="btn">🗣️ Text to Speech</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            const mainContent = document.getElementById('mainContent');
+            const minTime = 3000; // Minimum 3 seconds
+            const startTime = Date.now();
+
+            const hideLoader = () => {
+                const elapsed = Date.now() - startTime;
+                const remaining = minTime - elapsed;
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.style.display = 'none', 500);
+                    mainContent.style.display = 'block';
+                    setTimeout(() => mainContent.classList.add('visible'), 50);
+                }, remaining > 0 ? remaining : 0);
+            };
+
+            hideLoader();
+        });
+    </script>
+</body>
+</html>

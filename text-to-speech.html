@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>🗣️ Text to Speech</h1>
+        <div class="card">
+            <textarea id="ttsInput" placeholder="Type something..." rows="4"></textarea>
+            <button class="btn" id="speakBtn" onclick="speakText()">Speak</button>
+            <button class="btn secondary" onclick="stopSpeech()">Stop</button>
+            <a href="index.html" class="btn secondary">Back</a>
+        </div>
+    </div>
+
+    <!-- Notification container -->
+    <div id="notification-container"></div>
+
+    <script>
+        let utterance = null;
+
+        function speakText() {
+            const text = document.getElementById("ttsInput").value.trim();
+            if (!text) return showNotification("Please type something!");
+
+            // Prevent overlapping speech
+            if (speechSynthesis.speaking) {
+                showNotification("Audio is already playing. Please stop first.");
+                return;
+            }
+
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 1;
+            utterance.pitch = 1;
+
+            utterance.onstart = () => {
+                document.getElementById("speakBtn").innerText = "Speaking...";
+            };
+
+            utterance.onend = () => {
+                document.getElementById("speakBtn").innerText = "Speak";
+            };
+
+            speechSynthesis.speak(utterance);
+        }
+
+        function stopSpeech() {
+            if (speechSynthesis.speaking) {
+                speechSynthesis.cancel();
+                showNotification("Audio stopped");
+                document.getElementById("speakBtn").innerText = "Speak";
+            }
+        }
+
+        function showNotification(message) {
+            const container = document.getElementById("notification-container");
+
+            // Create notification div
+            const notif = document.createElement("div");
+            notif.className = "notification";
+            notif.innerText = message;
+
+            // Add to container
+            container.appendChild(notif);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notif.classList.add("hide");
+                setTimeout(() => container.removeChild(notif), 500);
+            }, 3000);
+        }
+
+    </script>
+</body>
+</html>
