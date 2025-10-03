@@ -39,7 +39,8 @@ SpeechSynthesis for text-to-speech.
 ├── css/
 │ └── styles.css # Styling for pages, loader, and alerts
 └── js/
-  └── script.js # All JS logic for speech functionality and custom alerts```
+  └── script.js # All JS logic for speech functionality and custom alerts
+```
 
 ## Usage
 
