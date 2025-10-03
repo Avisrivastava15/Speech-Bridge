@@ -59,6 +59,10 @@ Use the buttons on each page to start speech recognition or speech synthesis.
 
 Custom alerts will notify you of missing input or actions in a visually appealing div popup.
 
+**Screenshots**
+
+
+
 
 **Future Enhancements**
 
