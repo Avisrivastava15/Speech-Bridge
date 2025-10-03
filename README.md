@@ -2,7 +2,7 @@
 
 SpeechBridge is a frontend-only web application that allows users to seamlessly convert speech to text and text to speech. The project focuses on a clean UI/UX experience with custom loader pages and interactive alerts using div elements, making it entirely self-contained without any backend.
 
-**Features**
+## Features
 
 🗣️ Speech-to-Text: Converts spoken words into text in real-time.
 
@@ -16,7 +16,7 @@ SpeechBridge is a frontend-only web application that allows users to seamlessly 
 
 🌐 Pure Frontend: Built entirely with HTML, CSS, and JavaScript—no backend required.
 
-**Technologies Used**
+## Technologies Used
 
 HTML – Structure of the application.
 
@@ -24,13 +24,13 @@ CSS – Styling, animations, and custom loader/alerts.
 
 JavaScript – Speech recognition, speech synthesis, and alert logic.
 
-**Web APIs:**
+## Web APIs:
 
 SpeechRecognition / webkitSpeechRecognition for speech-to-text.
 
 SpeechSynthesis for text-to-speech.
 
-**Project Structure**
+## Project Structure
 
 speechbridge/
 │
@@ -47,7 +47,7 @@ speechbridge/
 └── js/
     └── script.js       # All JS logic for speech functionality and custom alerts
 
-**Usage**
+## Usage
 
 Open index.html in a browser.
 
@@ -59,15 +59,15 @@ Use the buttons on each page to start speech recognition or speech synthesis.
 
 Custom alerts will notify you of missing input or actions in a visually appealing div popup.
 
-**Screenshots**
+## Screenshots
 
- ## Home Page
+ **Home Page**
 ![Notifications](output/1.png)
 
-## Speech to Text
+**Speech to Text**
 ![Speech to Text](output/2.png)
 
-## Text to Speech
+**Text to Speech**
 ![Text to Speech](output/3.png)
 
 
@@ -75,7 +75,7 @@ Custom alerts will notify you of missing input or actions in a visually appealin
 
 
 
-**Future Enhancements**
+## Future Enhancements
 
 Add theme switcher (dark/light mode)
 
@@ -85,4 +85,4 @@ Add download transcript or audio file feature
 
 Enhance loader with progress percentage
 
-⚠️ Note: This project works only on Chrome, Edge, and Brave. Safari and Firefox are not supported.
+**⚠️ Note:** This project works only on Chrome, Edge, and Brave. Safari and Firefox are not supported.
