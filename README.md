@@ -60,6 +60,16 @@ Use the buttons on each page to start speech recognition or speech synthesis.
 Custom alerts will notify you of missing input or actions in a visually appealing div popup.
 
 **Screenshots**
+ Home Page
+![Notifications](output.1.png)
+
+Speech to Text
+![Speech to Text](output.2.png)
+
+Text to Speech
+![Text to Speech](output.3.png)
+
+
 
 
 
