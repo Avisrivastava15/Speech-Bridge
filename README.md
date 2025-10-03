@@ -69,3 +69,5 @@ Add multi-language support for speech recognition and synthesis
 Add download transcript or audio file feature
 
 Enhance loader with progress percentage
+
+⚠️ Note: This project works only on Chrome, Edge, and Brave. Safari and Firefox are not supported.
