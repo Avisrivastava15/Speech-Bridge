@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speech to Text</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="speehBridge.png" type="image/x-icon">
+
 </head>
 <body>
     <div class="app-container">
@@ -19,7 +21,7 @@
     <div id="notification-container"></div>
 
     
-    <script>
+    <!-- <script>
         const startBtn = document.getElementById("startBtn");
         const speechResult = document.getElementById("speechResult");
 
@@ -59,6 +61,68 @@
         }
 
 
-    </script>
+    </script> -->
+    
+<script>
+  // Browser detection
+  const unsupportedDiv = document.getElementById("unsupported");
+  const isSupported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+
+  if (!isSupported) {
+    unsupportedDiv.innerText = "⚠️ This project works only in Chrome, Edge, and Brave. Safari and Firefox are not supported.";
+  }
+
+  const startBtn = document.getElementById("startBtn");
+  const speechResult = document.getElementById("speechResult");
+
+  if (isSupported) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.onstart = () => { startBtn.innerText = "Listening... 🎧"; };
+    recognition.onend = () => { startBtn.innerText = "🎤 Start Speaking"; };
+    recognition.onresult = (event) => {
+      const text = event.results[0][0].transcript;
+      speechResult.innerText = text;
+    };
+
+    startBtn.addEventListener("click", () => recognition.start());
+  } else {
+    startBtn.disabled = true;
+  }
+
+  // Copy text function (works better on mobile)
+  function copyText(id) {
+    const text = document.getElementById(id).innerText;
+
+    // Create temporary input to copy text
+    const tempInput = document.createElement("textarea");
+    tempInput.value = text;
+    tempInput.style.position = "absolute";
+    tempInput.style.left = "-9999px";
+    document.body.appendChild(tempInput);
+
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    showNotification("Text copied!");
+  }
+
+  // Custom notification
+  function showNotification(message) {
+    const container = document.getElementById("notification-container");
+    const notif = document.createElement("div");
+    notif.className = "notification";
+    notif.innerText = message;
+
+    container.appendChild(notif);
+
+    setTimeout(() => {
+      notif.classList.add("hide");
+      setTimeout(() => container.removeChild(notif), 500);
+    }, 2000);
+  }
+</script>
 </body>
 </html>
